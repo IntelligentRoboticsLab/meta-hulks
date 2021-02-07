@@ -1,0 +1,16 @@
+[Unit]
+Description=HULK Service - tuhhNao
+Requires=lola.service
+After=lola.service
+
+[Service]
+ExecStartPre=/usr/bin/camera-reset
+ExecStart=/bin/sh -c '/home/nao/naoqi/bin/tuhhNao >/home/nao/naoqi/tuhhNao.out 2>/home/nao/naoqi/tuhhNao.err'
+StandardOutput=journal
+Type=simple
+User=nao
+Group=nao
+
+[Install]
+WantedBy=default.target
+

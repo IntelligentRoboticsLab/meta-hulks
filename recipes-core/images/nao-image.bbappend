@@ -15,6 +15,7 @@ CORE_IMAGE_EXTRA_INSTALL += "\
                              libopus \
                              opusfile \
                              compilednn \
+                             tuhh-nao \
                             "
 
 TOOLCHAIN_TARGET_TASK_append = " libeigen-dev"
