@@ -1,0 +1,12 @@
+[Unit]
+Description=Configure network initially
+Before=systemd-networkd.service
+After=media-internal.mount
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/configure_ip_addresses
+ExecStartPost=/bin/systemctl disable network-config
+
+[Install]
+WantedBy=systemd-networkd.service
