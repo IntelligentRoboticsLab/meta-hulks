@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+INTERNAL_LOG_PATH=/home/nao/naoqi
+EXTERNAL_LOG_PATH=$(grep -m1 '^/dev/sda1' /proc/mounts | cut -d ' ' -f 2)/logs
+
+mkdir -p ${EXTERNAL_LOG_PATH}
+
+/home/nao/naoqi/bin/tuhhNao \
+         > >(tee ${EXTERNAL_LOG_PATH}/tuhhNao.out > ${INTERNAL_LOG_PATH}/tuhhNao.out) \
+        2> >(tee ${EXTERNAL_LOG_PATH}/tuhhNao.err > ${INTERNAL_LOG_PATH}/tuhhNao.err)
+
+

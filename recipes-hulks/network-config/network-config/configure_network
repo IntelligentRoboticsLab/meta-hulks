@@ -18,3 +18,5 @@ Name=en* eth*
 [Network]
 Address=10.1.24.${NAO_NUMBER}/16
 Gateway=10.1.24.1" > /etc/systemd/network/80-wired.network
+
+hostnamectl set-hostname ${HOSTNAME}

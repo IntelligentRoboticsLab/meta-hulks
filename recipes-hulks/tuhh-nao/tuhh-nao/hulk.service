@@ -5,7 +5,7 @@ After=lola.service
 
 [Service]
 ExecStartPre=/usr/bin/camera-reset
-ExecStart=/bin/sh -c '/home/nao/naoqi/bin/tuhhNao >/home/nao/naoqi/tuhhNao.out 2>/home/nao/naoqi/tuhhNao.err'
+ExecStart=/usr/bin/launchTuhhNao
 StandardOutput=journal
 Type=simple
 User=nao

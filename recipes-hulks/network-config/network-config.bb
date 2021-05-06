@@ -3,7 +3,7 @@ LICENSE = "CLOSED"
 
 SRC_URI = "\
            file://id_map.json \
-           file://configure_ip_addresses \
+           file://configure_network \
            file://network-config.service \
            "
 
@@ -11,14 +11,14 @@ do_install() {
     install -d ${D}${sysconfdir}/
     install -m 0644 ${WORKDIR}/id_map.json ${D}${sysconfdir}/
     install -d ${D}${sbindir}/
-    install -m 0755 ${WORKDIR}/configure_ip_addresses ${D}${sbindir}/
+    install -m 0755 ${WORKDIR}/configure_network ${D}${sbindir}/
     install -d ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/network-config.service ${D}${systemd_unitdir}/system/
 }
 
 FILES_${PN} = "\
                ${sysconfdir}/id_map.json \
-               ${sbindir}/configure_ip_addresses \
+               ${sbindir}/configure_network \
                ${systemd_unitdir}/system/network-config.service \
               "
 

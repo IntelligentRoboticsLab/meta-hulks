@@ -5,7 +5,7 @@ After=media-internal.mount
 
 [Service]
 Type=oneshot
-ExecStart=/usr/sbin/configure_ip_addresses
+ExecStart=/usr/sbin/configure_network
 ExecStartPost=/bin/systemctl disable network-config
 
 [Install]
