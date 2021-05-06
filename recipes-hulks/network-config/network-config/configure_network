@@ -3,6 +3,11 @@
 HEAD_ID="$(/opt/aldebaran/bin/head_id)"
 QUERY_STRING=".\"idmap.nao\"[] | select(.headid == \"${HEAD_ID}\") | .name"
 HOSTNAME="$(jq -r "${QUERY_STRING}" /etc/id_map.json)"
+
+if [ -z "${HOSTNAME}" ]; then
+  exit
+fi
+
 NAO_NUMBER="$(echo ${HOSTNAME} | cut -c8-)"
 
 echo "[Match]
