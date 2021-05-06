@@ -6,7 +6,6 @@ After=media-internal.mount
 [Service]
 Type=oneshot
 ExecStart=/usr/sbin/configure_network
-ExecStartPost=/bin/systemctl disable network-config
 
 [Install]
 WantedBy=systemd-networkd.service
