@@ -8,6 +8,7 @@ PV = "v190700"
 SRC_URI = "git://github.com/PortAudio/portaudio.git \
            file://0001-Find-jack.patch \
            file://0001-Add-portaudio-namespace.patch \
+           file://0001-Use-GNUInstallDirs-module-instead-of-hard-coded-path.patch \
            "
 SRCREV = "147dd722548358763a8b649b3e4b41dfffbcfbb6"
 S = "${WORKDIR}/git"
@@ -31,12 +32,8 @@ do_install_append() {
 }
 
 FILES_SOLIBSDEV = ""
-#FILES_${PN} += "${libdir}/libportaudio.so"
-#FILES_${PN} += "${libdir}/cmake/portaudio/*"
-#FILES_${PN} += "${libdir}/pkgconfig/*"
-#FILES_${PN} += "*"
-#FILES_${PN} += "${libdir}/*"
-FILES_${PN} += "/usr/lib/libportaudio.so"
-FILES_${PN} += "/usr/lib/cmake/portaudio/*"
-FILES_${PN} += "/usr/lib/pkgconfig/*"
-#FILES_${PN} += "${libdir}/libportaudio.so"
+FILES_${PN} += " \
+                ${libdir}/libportaudio.so \
+                ${libdir}/cmake/portaudio/* \
+                ${libdir}/pkgconfig/* \
+               "
