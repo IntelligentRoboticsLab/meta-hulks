@@ -1,0 +1,22 @@
+From 61c18194c29ddfe69fc1a4507c4552458a958baf Mon Sep 17 00:00:00 2001
+From: Hendrik <git@h3ndrk.de>
+Date: Sat, 29 May 2021 23:03:28 +0200
+Subject: [PATCH] Add libpng:: namespace
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6451fcf..ab1e3b3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -915,7 +915,7 @@ endif()
+ 
+ # Create an export file that CMake users can include() to import our targets.
+ if(NOT SKIP_INSTALL_EXPORT AND NOT SKIP_INSTALL_ALL)
+-  install(EXPORT libpng DESTINATION lib/libpng FILE lib${PNG_LIB_NAME}.cmake)
++  install(EXPORT libpng NAMESPACE "libpng::" DESTINATION ${CMAKE_INSTALL_LIBDIR}/libpng FILE lib${PNG_LIB_NAME}.cmake)
+ endif()
+ 
+ # what's with libpng-manual.txt and all the extra files?
