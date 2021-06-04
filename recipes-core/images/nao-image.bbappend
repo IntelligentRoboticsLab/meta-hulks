@@ -19,6 +19,7 @@ CORE_IMAGE_EXTRA_INSTALL += "\
                              libxml2-utils \
                              tuhh-nao \
                              network-config \
+                             hulks-cmake \
                             "
 
 TOOLCHAIN_TARGET_TASK_append = " libeigen-dev"
