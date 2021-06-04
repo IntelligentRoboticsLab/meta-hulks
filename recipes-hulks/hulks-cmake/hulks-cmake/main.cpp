@@ -6,6 +6,7 @@
 #include <png.h>
 #include <pthread.h>
 #include <CompiledNN/CompiledNN.h>
+#include <portaudio.h>
 
 int main() {
   fftw_cleanup();
@@ -18,6 +19,7 @@ int main() {
   png_structp png{png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL)};
   pthread_self();
   NeuralNetwork::Model model;
+  Pa_Terminate();
   std::cout << "ok\n";
   return 0;
 }

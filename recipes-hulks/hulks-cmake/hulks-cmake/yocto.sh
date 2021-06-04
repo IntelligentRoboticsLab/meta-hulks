@@ -18,4 +18,4 @@ rm -Rf build/yocto
 mkdir -p build/yocto
 cmake -G Ninja -Bbuild/yocto -DCMAKE_INSTALL_RPATH="${OECORE_TARGET_SYSROOT}/lib64:${OECORE_TARGET_SYSROOT}/usr/lib64" -DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE -DCMAKE_EXE_LINKER_FLAGS="-Wl,--dynamic-linker=${OECORE_TARGET_SYSROOT}/lib64/ld-linux-x86-64.so.2" -S.
 cmake --build build/yocto
-LD_LIBRARY_PATH="${OECORE_TARGET_SYSROOT}/lib64:${OECORE_TARGET_SYSROOT}/usr/lib64" build/yocto/test
+LD_LIBRARY_PATH="${OECORE_TARGET_SYSROOT}/lib64:${OECORE_TARGET_SYSROOT}/usr/lib64" build/yocto/hulks-cmake
