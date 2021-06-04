@@ -1,4 +1,4 @@
-From 9a26afabd7d13df7b48df966bbc5a3b2e4c180bc Mon Sep 17 00:00:00 2001
+From 9588f91a5fb4dd404230be3d0cde42cca8f9388c Mon Sep 17 00:00:00 2001
 From: Hendrik <git@h3ndrk.de>
 Date: Mon, 31 May 2021 21:26:16 +0200
 Subject: [PATCH] Add CMake
@@ -8,8 +8,8 @@ Subject: [PATCH] Add CMake
  cmake/FindOgg.cmake                |   7 +
  cmake/FindOpus.cmake               |   7 +
  cmake/opusfilePackageVersion.cmake |  70 +++++++
- opusfileConfig.cmake               |  41 ++++
- 5 files changed, 426 insertions(+)
+ opusfileConfig.cmake               |  43 +++++
+ 5 files changed, 428 insertions(+)
  create mode 100644 CMakeLists.txt
  create mode 100644 cmake/FindOgg.cmake
  create mode 100644 cmake/FindOpus.cmake
@@ -427,10 +427,10 @@ index 0000000..6efae1e
 +endfunction()
 diff --git a/opusfileConfig.cmake b/opusfileConfig.cmake
 new file mode 100644
-index 0000000..b56a704
+index 0000000..cb604c3
 --- /dev/null
 +++ b/opusfileConfig.cmake
-@@ -0,0 +1,41 @@
+@@ -0,0 +1,43 @@
 +# Ported from CMakeFindDependencyMacro.cmake (finding configs and using pkgconfig as fallback)
 +set(cmake_quiet_arg)
 +if(${CMAKE_FIND_PACKAGE_NAME}_FIND_QUIETLY)
@@ -445,6 +445,7 @@ index 0000000..b56a704
 +if(NOT TARGET Ogg::ogg)
 +  find_package(PkgConfig REQUIRED ${cmake_quiet_arg})
 +  pkg_check_modules(Ogg ${cmake_required_arg} ${cmake_quiet_arg} IMPORTED_TARGET ogg)
++  set_target_properties(PkgConfig::Ogg PROPERTIES IMPORTED_GLOBAL TRUE)
 +  add_library(Ogg::ogg ALIAS PkgConfig::Ogg)
 +endif()
 +
@@ -458,6 +459,7 @@ index 0000000..b56a704
 +if(NOT TARGET Opus::opus)
 +  find_package(PkgConfig REQUIRED ${cmake_quiet_arg})
 +  pkg_check_modules(Opus ${cmake_required_arg} ${cmake_quiet_arg} IMPORTED_TARGET opus)
++  set_target_properties(PkgConfig::Opus PROPERTIES IMPORTED_GLOBAL TRUE)
 +  add_library(Opus::opus ALIAS PkgConfig::Opus)
 +endif()
 +
