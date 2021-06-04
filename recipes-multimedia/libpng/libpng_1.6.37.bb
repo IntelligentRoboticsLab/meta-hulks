@@ -25,9 +25,6 @@ BINCONFIG = "${bindir}/libpng-config ${bindir}/libpng16-config"
 
 inherit cmake
 
-# Work around missing symbols
-#EXTRA_OECONF_append_class-target = " ${@bb.utils.contains("TUNE_FEATURES", "neon", "--enable-arm-neon=on", "--enable-arm-neon=off" ,d)}"
-
 PACKAGES =+ "${PN}-tools"
 
 FILES_${PN}-tools = "${bindir}/png-fix-itxt ${bindir}/pngfix ${bindir}/pngcp"
