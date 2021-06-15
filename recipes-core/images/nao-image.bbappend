@@ -7,7 +7,6 @@ CORE_IMAGE_EXTRA_INSTALL += "\
                              libpng \
                              zlib \
                              alsa-lib \
-                             portaudio-v19 \
                              fftw \
                              libsndfile1 \
                              msgpack-c \
