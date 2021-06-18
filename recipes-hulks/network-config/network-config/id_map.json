@@ -1,159 +1,64 @@
 {
   "idmap.nao": [
     {
-      "headid": "P0000074A03S84400010",
       "bodyid": "P0000073A03S84A00012",
-      "name": "tuhhnao51"
+      "headid": "P0000074A03S84400010",
+      "name": "tuhhnao21"
     },
     {
-      "headid": "P0000074A03S84A00011",
       "bodyid": "P0000073A03S83I00015",
-      "name": "tuhhnao52"
+      "headid": "P0000074A03S84A00011",
+      "name": "tuhhnao22"
     },
     {
-      "headid": "P0000074A03S85B00016",
       "bodyid": "P0000073A03S85B00002",
-      "name": "tuhhnao53"
+      "headid": "P0000074A03S85B00016",
+      "name": "tuhhnao23"
     },
     {
-      "headid": "P0000074A03S85V00012",
       "bodyid": "P0000073A03S85V00027",
-      "name": "tuhhnao54"
+      "headid": "P0000074A03S85V00012",
+      "name": "tuhhnao24"
     },
     {
-      "headid": "P0000074A04S8CP00042",
       "bodyid": "P0000073A06S8CP00043",
-      "name": "tuhhnao55"
+      "headid": "P0000074A04S8CP00042",
+      "name": "tuhhnao25"
     },
     {
-      "headid": "P0000074A04S8CP00056",
+      "headid": "P0000074A04S8CP00040",
+      "bodyid": "P0000073A06S8CP00038",
+      "name": "tuhhnao26"
+    },
+    {
+      "headid": "P0000074A04S8CP00037",
+      "bodyid": "P0000073A06S8CP00035",
+      "name": "tuhhnao27"
+    },
+    {
       "bodyid": "P0000073A06S8CP00054",
-      "name": "tuhhnao56"
+      "headid": "P0000074A04S8CP00056",
+      "name": "tuhhnao28"
     },
     {
-      "headid": "P0000074A05S98G00023",
-      "bodyid": "P0000073A10S98G00021",
-      "name": "tuhhnao57"
+      "bodyid": "P0000073A10S99M00002",
+      "headid": "P0000074A05S99M00009",
+      "name": "tuhhnao29"
     },
     {
-      "headid": "P0000074A03S84A00010",
-      "bodyid": "P0000073A03S84400011",
-      "name": "tuhhnao58"
+      "headid": "P0000074A06S9A900031",
+      "bodyid": "P0000073A10S9A900011",
+      "name": "tuhhnao30"
     },
     {
-      "headid": "P0000074A03S84F00004",
-      "bodyid": "P0000073A03S83I00013",
-      "name": "tuhhnao59"
+      "headid": "P0000074A06S9A900006",
+      "bodyid": "P0000073A10S9A900008",
+      "name": "tuhhnao31"
     },
     {
-      "headid": "P0000074A05S97I00037",
-      "bodyid": "P0000073A09S97I00024",
-      "name": "tuhhnao60"
-    },
-    {
-      "headid": "P0000074A05S98100043",
-      "bodyid": "P0000073A09S98100024",
-      "name": "tuhhnao61"
-    },
-    {
-      "headid": "P0000074A04S8CP00059",
-      "bodyid": "P0000073A06S8CP00051",
-      "name": "tuhhnao62"
-    },
-    {
-      "headid": "P0000074A04S91300051",
-      "bodyid": "P0000073A06S91300045",
-      "name": "tuhhnao63"
-    },
-    {
-      "headid": "P0000074A04S91300060",
-      "bodyid": "P0000073A09S97P00043",
-      "name": "tuhhnao64"
-    },
-    {
-      "headid": "P0000074A04S91300020",
-      "bodyid": "P0000073A06S91300015",
-      "name": "tuhhnao65"
-    },
-    {
-      "bodyid": "P0000073A03S83I00020",
-      "headid": "P0000074A03S84400008",
-      "name": "tuhhnao117"
-    },
-    {
-      "bodyid": "P0000073A06S91300013",
-      "headid": "P0000074A04S91300054",
-      "name": "tuhhnao118"
-    },
-    {
-      "bodyid": "P0000073A03S81S00030",
-      "headid": "P0000074A03S83I00015",
-      "name": "tuhhnao119"
-    },
-    {
-      "bodyid": "P0000073A03S83I00030",
-      "headid": "P0000074A03S83I00036",
-      "name": "tuhhnao120"
-    },
-    {
-      "bodyid": "P0000073A03S83I00031",
-      "headid": "P0000074A03S81S00013",
-      "name": "tuhhnao121"
-    },
-    {
-      "bodyid": "P0000073A07S93B00023",
-      "headid": "P0000074A05S93100023",
-      "name": "tuhhnao122"
-    },
-    {
-      "bodyid": "P0000073A07S93B00007",
-      "headid": "P0000074A05S93100051",
-      "name": "tuhhnao123"
-    },
-    {
-      "headid": "P0000074A03S84F00006",
-      "bodyid": "P0000073A03S83I00011",
-      "name": "tuhhnao124"
-    },
-    {
-      "headid": "P0000074A03S83I00031",
-      "bodyid": "P0000073A03S84400001",
-      "name": "tuhhnao125"
-    },
-    {
-      "headid": "P0000074A05S93B00020",
-      "bodyid": "P0000073A07S93100038",
-      "name": "tuhhnao126"
-    },
-    {
-      "headid": "P0000074A05S93B00031",
-      "bodyid": "P0000073A07S93B00017",
-      "name": "tuhhnao127"
-    },
-    {
-      "headid": "P0000074A05S93100017",
-      "bodyid": "P0000073A07S93B00006",
-      "name": "tuhhnao128"
-    },
-    {
-      "headid": "P0000074A04S91300003",
-      "bodyid": "P0000073A06S8CP00056",
-      "name": "tuhhnao129"
-    },
-    {
-      "headid": "P0000074A03S81S00033",
-      "bodyid": "P0000073A03S84F00002",
-      "name": "tuhhnao130"
-    },
-    {
-      "headid": "P0000074A04S8CD00045",
-      "bodyid": "P0000073A06S8CD00068",
-      "name": "tuhhnao131"
-    },
-    {
-      "headid": "P0000074A04S8CP00008",
-      "bodyid": "P0000073A06S8CP00014",
-      "name": "tuhhnao132"
+      "headid": "P0000074A05S98U00019",
+      "bodyid": "P0000073A10S98U00008",
+      "name": "tuhhnao32"
     }
   ]
 }
