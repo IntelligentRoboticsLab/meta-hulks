@@ -3,9 +3,6 @@ header:
     includes:
         - repo: meta-nao
           file: kas-project.yml
-local_conf_header:
-    meta-hulks: |
-        CONF_VERSION = "1"
 distro: Nao-OS
 repos:
     meta-hulks:
