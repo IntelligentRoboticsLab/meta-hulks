@@ -3,7 +3,7 @@ header:
     includes:
         - repo: meta-nao
           file: kas-project.yml
-distro: Nao-OS
+distro: HULKs-OS
 repos:
     meta-hulks:
     meta-nao:
