@@ -8,5 +8,5 @@ repos:
     meta-hulks:
     meta-nao:
         url: "https://github.com/HULKs/meta-nao.git"
-        refspec: main
+        refspec: hardknott
 
