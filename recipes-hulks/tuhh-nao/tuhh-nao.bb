@@ -5,12 +5,13 @@ LICENSE = "CLOSED"
 SRC_URI = " \
             file://camera-reset \
             file://hulk.service \
+            file://hulk-gdbserver.service \
             file://launchTuhhNao \
             file://hulk \
           "
 
 SYSTEMD_PACKAGES = "${PN}"
-SYSTEMD_SERVICE_${PN} = "hulk.service"
+SYSTEMD_SERVICE_${PN} = "hulk.service hulk-gdbserver.service"
 
 inherit systemd
 
@@ -22,6 +23,7 @@ do_install() {
 
   install -d ${D}${systemd_unitdir}/system/
   install -m 0644 ${WORKDIR}/hulk.service ${D}${systemd_unitdir}/system/
+  install -m 0644 ${WORKDIR}/hulk-gdbserver.service ${D}${systemd_unitdir}/system/
 }
 
 FILES_${PN} = "\
@@ -29,5 +31,6 @@ FILES_${PN} = "\
                 ${bindir}/launchTuhhNao \
                 ${bindir}/hulk \
                 ${systemd_unitdir}/system/hulk.service \
+                ${systemd_unitdir}/system/hulk-gdbserver.service \
               "
 
