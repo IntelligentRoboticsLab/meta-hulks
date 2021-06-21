@@ -9,4 +9,9 @@ repos:
     meta-nao:
         url: "https://github.com/HULKs/meta-nao.git"
         refspec: main
+    poky:
+        patches:
+            001-toolchain-shar-extract:
+                repo: "meta-hulks"
+                path: "patches/001-toolchain-shar-extract.patch"
 
