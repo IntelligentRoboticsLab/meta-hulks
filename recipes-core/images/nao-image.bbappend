@@ -15,6 +15,7 @@ CORE_IMAGE_EXTRA_INSTALL += "\
                              libsndfile1 \
                              libxml2-utils \
                              msgpack-c \
+                             nano \
                              network-config \
                              opusfile \
                              zlib \
