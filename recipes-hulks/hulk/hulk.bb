@@ -6,7 +6,7 @@ SRC_URI = " \
             file://camera-reset \
             file://hulk.service \
             file://hulk-gdbserver.service \
-            file://launchTuhhNao \
+            file://launchHULK \
             file://hulk \
           "
 
@@ -18,7 +18,7 @@ inherit systemd
 do_install() {
   install -d ${D}${bindir}
   install -m 755 ${WORKDIR}/camera-reset ${D}${bindir}
-  install -m 755 ${WORKDIR}/launchTuhhNao ${D}${bindir}
+  install -m 755 ${WORKDIR}/launchHULK ${D}${bindir}
   install -m 755 ${WORKDIR}/hulk ${D}${bindir}
 
   install -d ${D}${systemd_unitdir}/system/
@@ -28,9 +28,8 @@ do_install() {
 
 FILES_${PN} = "\
                 ${bindir}/camera-reset \
-                ${bindir}/launchTuhhNao \
+                ${bindir}/launchHULK \
                 ${bindir}/hulk \
                 ${systemd_unitdir}/system/hulk.service \
                 ${systemd_unitdir}/system/hulk-gdbserver.service \
               "
-

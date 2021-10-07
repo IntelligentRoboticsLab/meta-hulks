@@ -1,23 +1,23 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 CORE_IMAGE_EXTRA_INSTALL += "\
+                             alsa-lib \
                              boost \
                              bzip2 \
-                             libjpeg-turbo \
-                             libpng \
-                             zlib \
-                             alsa-lib \
+                             compilednn \
                              fftw \
-                             libsndfile1 \
-                             msgpack-c \
+                             hulk \
+                             jq \
+                             libjpeg-turbo \
                              libogg \
                              libopus \
-                             opusfile \
-                             compilednn \
-                             jq \
+                             libpng \
+                             libsndfile1 \
                              libxml2-utils \
-                             tuhh-nao \
+                             msgpack-c \
                              network-config \
+                             opusfile \
+                             zlib \
                             "
 
 TOOLCHAIN_TARGET_TASK_append = " libeigen-dev"
