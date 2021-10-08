@@ -11,4 +11,5 @@ StandardOutput=journal
 Type=simple
 User=nao
 Group=nao
-
+LimitCORE=infinity
+WorkingDirectory=/home/nao/naoqi
