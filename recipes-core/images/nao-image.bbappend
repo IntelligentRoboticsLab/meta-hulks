@@ -18,6 +18,7 @@ CORE_IMAGE_EXTRA_INSTALL += "\
                              msgpack-c \
                              nano \
                              network-config \
+                             aliveness \
                              opusfile \
                              zlib \
                             "
