@@ -2,7 +2,7 @@ SRC_URI += "\
     git://git@github.com/HULKs/nao.git;protocol=ssh;branch=master; \
     file://aliveness.service \
   "
-SRCREV = "a48c7630e80ec2f7d51796a9e924060eca20472f"
+SRCREV = "c3683fac92f539e03b7f35b2d741c31f6f46b3b4"
 
 S = "${WORKDIR}/git/tools/aliveness"
 
