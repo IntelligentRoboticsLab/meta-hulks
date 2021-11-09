@@ -7,6 +7,7 @@ CORE_IMAGE_EXTRA_INSTALL += "\
                              bzip2 \
                              compilednn \
                              fftw \
+                             hula \
                              hulk \
                              jq \
                              libjpeg-turbo \
@@ -15,10 +16,8 @@ CORE_IMAGE_EXTRA_INSTALL += "\
                              libpng \
                              libsndfile1 \
                              libxml2-utils \
-                             msgpack-c \
                              nano \
                              network-config \
-                             aliveness \
                              opusfile \
                              zlib \
                             "
