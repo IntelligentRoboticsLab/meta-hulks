@@ -1,7 +1,7 @@
 inherit cargo
 
 SRC_URI += " \
-    git://git@github.com/HULKs/nao.git;protocol=ssh;branch=master; \
+    git://git@github.com/HULKs/nao.git;protocol=ssh;branch=main; \
     file://hula.service \
 "
 SRCREV = "86b049724531a29f31c11c196cc8df3541583b79"
