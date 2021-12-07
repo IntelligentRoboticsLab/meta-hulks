@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 CORE_IMAGE_EXTRA_INSTALL += "\
                              alsa-lib \
@@ -22,4 +22,4 @@ CORE_IMAGE_EXTRA_INSTALL += "\
                              zlib \
                             "
 
-TOOLCHAIN_TARGET_TASK_append = " libeigen-dev"
+TOOLCHAIN_TARGET_TASK:append = " libeigen-dev"

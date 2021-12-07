@@ -88,16 +88,16 @@ HOMEPAGE = "github.com/HULKs/nao"
 LICENSE = "CLOSED"
 
 DEPENDS += "dbus"
-RDEPENDS_${PN} += "dbus"
+RDEPENDS:${PN} += "dbus"
 
 SYSTEMD_PACKAGES = "${PN}"
-SYSTEMD_SERVICE_${PN} = "hula.service"
+SYSTEMD_SERVICE:${PN} = "hula.service"
 
-do_install_append() {
+do_install:append() {
   install -d ${D}${systemd_unitdir}/system/
   install -m 0644 ${WORKDIR}/hula.service ${D}${systemd_unitdir}/system/
 }
 
-FILES_${PN} += "${systemd_unitdir}/system/hula.service"
+FILES:${PN} += "${systemd_unitdir}/system/hula.service"
 
 inherit systemd
