@@ -23,3 +23,4 @@ CORE_IMAGE_EXTRA_INSTALL += "\
                             "
 
 TOOLCHAIN_TARGET_TASK:append = " libeigen-dev"
+TOOLCHAIN_HOST_TASK:append = " packagegroup-rust-cross-canadian-${MACHINE}"
