@@ -9,8 +9,6 @@ repos:
     meta-nao:
         url: "https://github.com/HULKs/meta-nao.git"
         refspec: main
-  #meta-rust:
-    #url: "https://github.com/meta-rust/meta-rust.git"
     poky:
         patches:
             001-nao-cargo-home:
