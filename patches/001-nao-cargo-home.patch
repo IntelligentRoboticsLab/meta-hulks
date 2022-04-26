@@ -16,11 +16,12 @@ index 840793c50b..6494ae7ae4 100644
  	mkdir -p "\$CARGO_HOME"
          # Init the default target once, it might be otherwise user modified.
  	if [ ! -f "\$CARGO_HOME/config" ]; then
-@@ -66,6 +71,8 @@ do_install () {
+@@ -66,6 +71,9 @@ do_install () {
  	export CARGO_HTTP_MULTIPLEXING=false
  
  	export CARGO_HTTP_CAINFO="\$OECORE_NATIVE_SYSROOT/etc/ssl/certs/ca-certificates.crt"
 +	export CARGO_CUSTOM_BUILD_DYNAMIC_LINKER="\$OECORE_NATIVE_SYSROOT/lib/ld-linux-x86-64.so.2"
++	export LIBCLANG_PATH="\$OECORE_NATIVE_SYSROOT/usr/lib"
 +	export BINDGEN_EXTRA_CLANG_ARGS_${@d.getVar('TARGET_SYS').replace('-', '_')}="--sysroot=\$OECORE_TARGET_SYSROOT"
  	EOF
  }
