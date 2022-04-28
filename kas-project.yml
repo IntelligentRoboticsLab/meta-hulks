@@ -14,4 +14,6 @@ repos:
             001-nao-cargo-home:
                 repo: "meta-hulks"
                 path: "patches/001-nao-cargo-home.patch"
-
+            0001-Rename-thread_local-target-option-and-disable-it:
+                repo: "meta-hulks"
+                path: "patches/0001-Rename-thread_local-target-option-and-disable-it.patch"
