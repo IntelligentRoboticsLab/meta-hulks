@@ -7,8 +7,7 @@ distro: HULKs-OS
 repos:
     meta-hulks:
     meta-nao:
-        url: "https://github.com/HULKs/meta-nao.git"
-        refspec: main
+        path: meta-nao
     poky:
         patches:
             001-nao-cargo-home:
