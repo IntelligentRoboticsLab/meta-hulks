@@ -1,0 +1,197 @@
+From 4abfa4d05d6467857b25f1009f0336ecf12a6527 Mon Sep 17 00:00:00 2001
+From: Hendrik <git@h3ndrk.de>
+Date: Tue, 28 Jun 2022 06:34:27 +0200
+Subject: [PATCH] Upgrade to Rust 1.61
+
+---
+ meta/conf/distro/include/tcmode-default.inc   |  2 +-
+ ...59.0.bb => cargo-cross-canadian_1.61.0.bb} |  0
+ .../{cargo_1.59.0.bb => cargo_1.61.0.bb}      |  0
+ ...syscalls-to-musl-riscv64-definitions.patch | 44 -------------------
+ ...ibstd-rs_1.59.0.bb => libstd-rs_1.61.0.bb} |  3 +-
+ ....59.0.bb => rust-cross-canadian_1.61.0.bb} |  0
+ ...t-cross_1.59.0.bb => rust-cross_1.61.0.bb} |  0
+ ...ssdk_1.59.0.bb => rust-crosssdk_1.61.0.bb} |  0
+ meta/recipes-devtools/rust/rust-llvm.inc      |  2 +
+ ...ust-llvm_1.59.0.bb => rust-llvm_1.61.0.bb} |  0
+ meta/recipes-devtools/rust/rust-snapshot.inc  | 10 ++---
+ meta/recipes-devtools/rust/rust-source.inc    |  2 +-
+ ...bb => rust-tools-cross-canadian_1.61.0.bb} |  0
+ .../rust/{rust_1.59.0.bb => rust_1.61.0.bb}   |  0
+ 14 files changed, 10 insertions(+), 53 deletions(-)
+ rename meta/recipes-devtools/cargo/{cargo-cross-canadian_1.59.0.bb => cargo-cross-canadian_1.61.0.bb} (100%)
+ rename meta/recipes-devtools/cargo/{cargo_1.59.0.bb => cargo_1.61.0.bb} (100%)
+ delete mode 100644 meta/recipes-devtools/rust/libstd-rs/0001-Add-400-series-syscalls-to-musl-riscv64-definitions.patch
+ rename meta/recipes-devtools/rust/{libstd-rs_1.59.0.bb => libstd-rs_1.61.0.bb} (71%)
+ rename meta/recipes-devtools/rust/{rust-cross-canadian_1.59.0.bb => rust-cross-canadian_1.61.0.bb} (100%)
+ rename meta/recipes-devtools/rust/{rust-cross_1.59.0.bb => rust-cross_1.61.0.bb} (100%)
+ rename meta/recipes-devtools/rust/{rust-crosssdk_1.59.0.bb => rust-crosssdk_1.61.0.bb} (100%)
+ rename meta/recipes-devtools/rust/{rust-llvm_1.59.0.bb => rust-llvm_1.61.0.bb} (100%)
+ rename meta/recipes-devtools/rust/{rust-tools-cross-canadian_1.59.0.bb => rust-tools-cross-canadian_1.61.0.bb} (100%)
+ rename meta/recipes-devtools/rust/{rust_1.59.0.bb => rust_1.61.0.bb} (100%)
+
+diff --git a/meta/conf/distro/include/tcmode-default.inc b/meta/conf/distro/include/tcmode-default.inc
+index d362bd76c6..18d0f2b3af 100644
+--- a/meta/conf/distro/include/tcmode-default.inc
++++ b/meta/conf/distro/include/tcmode-default.inc
+@@ -27,7 +27,7 @@ GOVERSION ?= "1.17%"
+ # This can not use wildcards like 8.0.% since it is also used in mesa to denote
+ # llvm version being used, so always bump it with llvm recipe version bump
+ LLVMVERSION ?= "13.0.1"
+-RUSTVERSION ?= "1.59%"
++RUSTVERSION ?= "1.61%"
+ 
+ PREFERRED_VERSION_gcc ?= "${GCCVERSION}"
+ PREFERRED_VERSION_gcc-cross-${TARGET_ARCH} ?= "${GCCVERSION}"
+diff --git a/meta/recipes-devtools/cargo/cargo-cross-canadian_1.59.0.bb b/meta/recipes-devtools/cargo/cargo-cross-canadian_1.61.0.bb
+similarity index 100%
+rename from meta/recipes-devtools/cargo/cargo-cross-canadian_1.59.0.bb
+rename to meta/recipes-devtools/cargo/cargo-cross-canadian_1.61.0.bb
+diff --git a/meta/recipes-devtools/cargo/cargo_1.59.0.bb b/meta/recipes-devtools/cargo/cargo_1.61.0.bb
+similarity index 100%
+rename from meta/recipes-devtools/cargo/cargo_1.59.0.bb
+rename to meta/recipes-devtools/cargo/cargo_1.61.0.bb
+diff --git a/meta/recipes-devtools/rust/libstd-rs/0001-Add-400-series-syscalls-to-musl-riscv64-definitions.patch b/meta/recipes-devtools/rust/libstd-rs/0001-Add-400-series-syscalls-to-musl-riscv64-definitions.patch
+deleted file mode 100644
+index 5b330b85a6..0000000000
+--- a/meta/recipes-devtools/rust/libstd-rs/0001-Add-400-series-syscalls-to-musl-riscv64-definitions.patch
++++ /dev/null
+@@ -1,44 +0,0 @@
+-From 7b3bc1de0c79a1b410105ce36bbe9f774438d263 Mon Sep 17 00:00:00 2001
+-From: Ross Schulman <ross@rbs.io>
+-Date: Tue, 1 Feb 2022 09:13:16 -0500
+-Subject: [PATCH] Add 400-series syscalls to musl riscv64 definitions
+-
+-Upstream-Status: Backport [https://github.com/rust-lang/libc/commit/7b3bc1de0c79a1b410105ce36bbe9f774438d263]
+-Signed-off-by: Khem Raj <raj.khem@gmail.com>
+----
+- .../linux_like/linux/musl/b64/riscv64/mod.rs  | 19 +++++++++++++++++++
+- 1 file changed, 19 insertions(+)
+-
+-diff --git a/vendor/libc-0.2.108/src/unix/linux_like/linux/musl/b64/riscv64/mod.rs b/vendor/libc-0.2.108/src/unix/linux_like/linux/musl/b64/riscv64/mod.rs
+-index 6b17621c7..2036583d5 100644
+---- a/vendor/libc-0.2.108/src/unix/linux_like/linux/musl/b64/riscv64/mod.rs
+-+++ b/vendor/libc-0.2.108/src/unix/linux_like/linux/musl/b64/riscv64/mod.rs
+-@@ -465,6 +465,25 @@ pub const SYS_pkey_mprotect: ::c_long = 288;
+- pub const SYS_pkey_alloc: ::c_long = 289;
+- pub const SYS_pkey_free: ::c_long = 290;
+- pub const SYS_statx: ::c_long = 291;
+-+pub const SYS_pidfd_send_signal: ::c_long = 424;
+-+pub const SYS_io_uring_setup: ::c_long = 425;
+-+pub const SYS_io_uring_enter: ::c_long = 426;
+-+pub const SYS_io_uring_register: ::c_long = 427;
+-+pub const SYS_open_tree: ::c_long = 428;
+-+pub const SYS_move_mount: ::c_long = 429;
+-+pub const SYS_fsopen: ::c_long = 430;
+-+pub const SYS_fsconfig: ::c_long = 431;
+-+pub const SYS_fsmount: ::c_long = 432;
+-+pub const SYS_fspick: ::c_long = 433;
+-+pub const SYS_pidfd_open: ::c_long = 434;
+-+pub const SYS_clone3: ::c_long = 435;
+-+pub const SYS_close_range: ::c_long = 436;
+-+pub const SYS_openat2: ::c_long = 437;
+-+pub const SYS_pidfd_getfd: ::c_long = 438;
+-+pub const SYS_faccessat2: ::c_long = 439;
+-+pub const SYS_process_madvise: ::c_long = 440;
+-+pub const SYS_epoll_pwait2: ::c_long = 441;
+-+pub const SYS_mount_setattr: ::c_long = 442;
+- 
+- pub const O_APPEND: ::c_int = 1024;
+- pub const O_DIRECT: ::c_int = 0x4000;
+--- 
+-2.35.1
+-
+diff --git a/meta/recipes-devtools/rust/libstd-rs_1.59.0.bb b/meta/recipes-devtools/rust/libstd-rs_1.61.0.bb
+similarity index 71%
+rename from meta/recipes-devtools/rust/libstd-rs_1.59.0.bb
+rename to meta/recipes-devtools/rust/libstd-rs_1.61.0.bb
+index 0ff1fbd678..1c98bb298e 100644
+--- a/meta/recipes-devtools/rust/libstd-rs_1.59.0.bb
++++ b/meta/recipes-devtools/rust/libstd-rs_1.61.0.bb
+@@ -3,10 +3,9 @@ require libstd-rs.inc
+ 
+ # Check if libc crate is >= 0.2.17 before dropping this patch
+ SRC_URI += " \
+-    file://0001-Add-400-series-syscalls-to-musl-riscv64-definitions.patch;patchdir=../../ \
+     file://0001-Update-checksums-for-modified-vendored-libc.patch;patchdir=../../ \
+ "
+ # libstd moved from src/libstd to library/std in 1.47+
+ S = "${RUSTSRC}/library/std"
+ 
+-BBCLASSEXTEND = "nativesdk"
+\ No newline at end of file
++BBCLASSEXTEND = "nativesdk"
+diff --git a/meta/recipes-devtools/rust/rust-cross-canadian_1.59.0.bb b/meta/recipes-devtools/rust/rust-cross-canadian_1.61.0.bb
+similarity index 100%
+rename from meta/recipes-devtools/rust/rust-cross-canadian_1.59.0.bb
+rename to meta/recipes-devtools/rust/rust-cross-canadian_1.61.0.bb
+diff --git a/meta/recipes-devtools/rust/rust-cross_1.59.0.bb b/meta/recipes-devtools/rust/rust-cross_1.61.0.bb
+similarity index 100%
+rename from meta/recipes-devtools/rust/rust-cross_1.59.0.bb
+rename to meta/recipes-devtools/rust/rust-cross_1.61.0.bb
+diff --git a/meta/recipes-devtools/rust/rust-crosssdk_1.59.0.bb b/meta/recipes-devtools/rust/rust-crosssdk_1.61.0.bb
+similarity index 100%
+rename from meta/recipes-devtools/rust/rust-crosssdk_1.59.0.bb
+rename to meta/recipes-devtools/rust/rust-crosssdk_1.61.0.bb
+diff --git a/meta/recipes-devtools/rust/rust-llvm.inc b/meta/recipes-devtools/rust/rust-llvm.inc
+index 5c2ccdac9a..21e04fb1d0 100644
+--- a/meta/recipes-devtools/rust/rust-llvm.inc
++++ b/meta/recipes-devtools/rust/rust-llvm.inc
+@@ -36,6 +36,8 @@ EXTRA_OECMAKE = " \
+     -DLLVM_INCLUDE_EXAMPLES=OFF \
+     -DLLVM_BUILD_TESTS=OFF \
+     -DLLVM_INCLUDE_TESTS=OFF \
++    -DLLVM_BUILD_BENCHMARKS=OFF \
++    -DLLVM_INCLUDE_BENCHMARKS=OFF \
+     -DLLVM_TARGET_ARCH=${TARGET_ARCH} \
+     -DCMAKE_INSTALL_PREFIX:PATH=${libdir}/llvm-rust \
+ "
+diff --git a/meta/recipes-devtools/rust/rust-llvm_1.59.0.bb b/meta/recipes-devtools/rust/rust-llvm_1.61.0.bb
+similarity index 100%
+rename from meta/recipes-devtools/rust/rust-llvm_1.59.0.bb
+rename to meta/recipes-devtools/rust/rust-llvm_1.61.0.bb
+diff --git a/meta/recipes-devtools/rust/rust-snapshot.inc b/meta/recipes-devtools/rust/rust-snapshot.inc
+index b2f68766cf..da0ed02f15 100644
+--- a/meta/recipes-devtools/rust/rust-snapshot.inc
++++ b/meta/recipes-devtools/rust/rust-snapshot.inc
+@@ -2,13 +2,13 @@
+ ## snapshot info is taken from rust/src/stage0.txt
+ ## TODO: find a way to add additional SRC_URIs based on the contents of an
+ ##       earlier SRC_URI.
+-RS_VERSION = "1.58.0"
+-CARGO_VERSION = "1.58.0"
++RS_VERSION = "1.61.0"
++CARGO_VERSION = "1.61.0"
+ 
+ # TODO: Add hashes for other architecture toolchains as well. Make a script?
+-SRC_URI[rust-std-snapshot-x86_64.sha256sum] = "319e2dc5f50cbdfb7091f56643c637465d6bc34291ccdaf1a06a2023a37f50c7"
+-SRC_URI[rustc-snapshot-x86_64.sha256sum] = "47e586451ac25027eb6c0d23c881a917d21d074d2fe9e5a3f41b4b6de1622be0"
+-SRC_URI[cargo-snapshot-x86_64.sha256sum] = "3d44be4cf353f4172b79485121286be667b76246d9998e7c48a3c2907f5e9552"
++SRC_URI[rust-std-snapshot-x86_64.sha256sum] = "270b07aa5f2de52255a117e1e587138d77375ce0d09a1d7fead085f29b3977e9"
++SRC_URI[rustc-snapshot-x86_64.sha256sum] = "21c4613f389ed130fbaaf88f1e984319f72b5fc10734569a5ba19e22ebb03abd"
++SRC_URI[cargo-snapshot-x86_64.sha256sum] = "9461727d754f865ef2a87479d40bbe4c5176f80963b7c50b7797bc8940d7a0a0"
+ 
+ SRC_URI[rust-std-snapshot-aarch64.sha256sum] = "b562646864cea55079e4b9d35dc2e9b6abc8efa224e2e49779ba2cbf8ff83b3d"
+ SRC_URI[rustc-snapshot-aarch64.sha256sum] = "8d7c8a64118ee523ad3ffc84baf91cf02ff4415390dc835f3925f8697170ec65"
+diff --git a/meta/recipes-devtools/rust/rust-source.inc b/meta/recipes-devtools/rust/rust-source.inc
+index ea70ad786f..e48ba010c1 100644
+--- a/meta/recipes-devtools/rust/rust-source.inc
++++ b/meta/recipes-devtools/rust/rust-source.inc
+@@ -1,5 +1,5 @@
+ SRC_URI += "https://static.rust-lang.org/dist/rustc-${PV}-src.tar.xz;name=rust"
+-SRC_URI[rust.sha256sum] = "375996ead731cab2203ec10a66a3c4568ab6997d7e5d3ae597658164fe27be3d"
++SRC_URI[rust.sha256sum] = "a63305a3ad734f170746b337a5e3d07ccaa7aa8f253dc52336b44c0a3b549d7b"
+ 
+ RUSTSRC = "${WORKDIR}/rustc-${PV}-src"
+ 
+diff --git a/meta/recipes-devtools/rust/rust-tools-cross-canadian_1.59.0.bb b/meta/recipes-devtools/rust/rust-tools-cross-canadian_1.61.0.bb
+similarity index 100%
+rename from meta/recipes-devtools/rust/rust-tools-cross-canadian_1.59.0.bb
+rename to meta/recipes-devtools/rust/rust-tools-cross-canadian_1.61.0.bb
+diff --git a/meta/recipes-devtools/rust/rust_1.59.0.bb b/meta/recipes-devtools/rust/rust_1.61.0.bb
+similarity index 100%
+rename from meta/recipes-devtools/rust/rust_1.59.0.bb
+rename to meta/recipes-devtools/rust/rust_1.61.0.bb
+-- 
+2.30.2
+

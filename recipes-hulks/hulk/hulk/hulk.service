@@ -5,6 +5,7 @@ After=lola.service
 
 [Service]
 ExecStart=/usr/bin/launchHULK
+TimeoutStopSec=10
 StandardOutput=journal
 Type=simple
 User=nao
