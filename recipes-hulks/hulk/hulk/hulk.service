@@ -1,7 +1,7 @@
 [Unit]
 Description=HULK Service
-Requires=lola.service
-After=lola.service
+Requires=lola.service hula.service
+After=lola.service hula.service
 
 [Service]
 ExecStart=/usr/bin/launchHULK
