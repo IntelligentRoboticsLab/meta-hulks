@@ -1,10 +1,10 @@
 inherit cargo
 
 SRC_URI += " \
-    git://git@github.com/HULKs/nao.git;protocol=ssh;branch=h3ndrksTemporaryPregamyMcPregameFaceForYoctoTestingWhichWillBeRemovedShortlyDontWorry; \
+    git://git@github.com/HULKs/nao.git;protocol=ssh;branch=nao; \
     file://hula.service \
 "
-SRCREV = "bbc64a13544ff831af23884ba241414607fefeea"
+SRCREV = "b0259beb30411f2c36de89fadd25e54a53b55b17"
 S = "${WORKDIR}/git/tools/hula"
 CARGO_SRC_DIR = ""
 
