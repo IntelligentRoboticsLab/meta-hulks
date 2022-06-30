@@ -89,8 +89,14 @@ LICENSE = "GPL-3.0-only"
 
 inherit pkgconfig
 
-DEPENDS += "dbus"
-RDEPENDS:${PN} += "dbus"
+DEPENDS += " \
+            dbus \
+            systemd \
+           "
+RDEPENDS:${PN} += " \
+                   dbus \
+                   systemd \
+                  "
 
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE:${PN} = "hula.service"
