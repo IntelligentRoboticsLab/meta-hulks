@@ -4,12 +4,18 @@ header:
         - repo: meta-nao
           file: kas-project.yml
 distro: HULKs-OS
+local_conf_header:
+    meta-hulks: |
+        SDK_TOOLCHAIN_LANGS ?= "rust"
 repos:
     meta-hulks:
     meta-nao:
         path: meta-nao
     poky:
         patches:
-            001-nao-cargo-home:
+            0001-nao-cargo-home:
                 repo: "meta-hulks"
                 path: "patches/0001-nao-cargo-home.patch"
+            0001-rust_1.65:
+                repo: "meta-hulks"
+                path: "patches/0001-rust_1.65.patch"
