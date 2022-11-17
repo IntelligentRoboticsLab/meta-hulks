@@ -13,9 +13,6 @@ repos:
         path: meta-nao
     poky:
         patches:
-            0001-nao-cargo-home:
-                repo: "meta-hulks"
-                path: "patches/0001-nao-cargo-home.patch"
             0001-rust_1.65:
                 repo: "meta-hulks"
                 path: "patches/0001-rust_1.65.patch"
