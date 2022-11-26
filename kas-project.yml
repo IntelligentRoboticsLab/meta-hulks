@@ -1,5 +1,5 @@
 header:
-    version: 10
+    version: 12
     includes:
         - repo: meta-nao
           file: kas-project.yml
