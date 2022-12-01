@@ -1,6 +1,7 @@
 SUMMARY = "Nao SPL Robocup -- HULKs setup"
 HOMEPAGE = "https://hulks.de"
-LICENSE = "CLOSED"
+LICENSE = "GPL-3.0-only"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-3.0-only;md5=c79ff39f19dfec6d293b95dea7b07891"
 
 SRC_URI = " \
             file://hulk.service \
