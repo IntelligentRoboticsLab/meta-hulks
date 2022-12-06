@@ -11,12 +11,13 @@ if [ -z "${HOSTNAME}" ]; then
 fi
 
 NAO_NUMBER="$(echo ${HOSTNAME} | cut -c8-)"
+TEAM_NUMBER="24"
 
 echo "[Match]
 Name=wlan*
 
 [Network]
-Address=10.0.24.${NAO_NUMBER}/16
+Address=10.0.${TEAM_NUMBER}.${NAO_NUMBER}/16
 
 [Route]
 Gateway=0.0.0.0
@@ -26,7 +27,7 @@ echo "[Match]
 Name=en* eth*
 
 [Network]
-Address=10.1.24.${NAO_NUMBER}/16
+Address=10.1.${TEAM_NUMBER}.${NAO_NUMBER}/16
 
 [Route]
 Gateway=0.0.0.0
