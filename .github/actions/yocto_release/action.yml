@@ -1,0 +1,5 @@
+name: Yocto Release
+description: Releases HULKs-OS Images & SDKs
+runs:
+  using: node16
+  main: main.js
