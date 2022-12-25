@@ -32,4 +32,4 @@ RUN useradd --no-log-init --create-home --home-dir /yocto --system yocto
 WORKDIR /yocto
 USER yocto:yocto
 
-VOLUME /yocto/build
+VOLUME /yocto

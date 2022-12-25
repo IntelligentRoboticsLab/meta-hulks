@@ -7,7 +7,8 @@ distro: HULKs-OS
 repos:
     meta-hulks:
     meta-nao:
-        path: meta-nao
+        url: "https://github.com/HULKs/meta-nao.git"
+        refspec: 20b52322d907b250ff806c1e0673e11003bc48ef
     poky:
         patches:
             0001-rust_1.65:
