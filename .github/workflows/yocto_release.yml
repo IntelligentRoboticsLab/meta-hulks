@@ -12,7 +12,7 @@ jobs:
       # - ubuntu-latest
       - self-hosted
     container:
-      image: yocto_release
+      image: ghcr.io/hulks/yocto_release
       volumes:
         - yocto_release_build:/yocto/build
     steps:

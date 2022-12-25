@@ -1,5 +1,7 @@
 FROM ubuntu:rolling
 
+LABEL org.opencontainers.image.source https://github.com/HULKs/meta-hulks
+
 # https://docs.yoctoproject.org/3.2.3/ref-manual/ref-system-requirements.html#ubuntu-and-debian (without some packages, with NodeJS)
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Europe/Berlin apt-get install --no-install-recommends --yes \
     build-essential \
