@@ -32,33 +32,24 @@ function readDistroVersion() {
 }
 
 async function releaseImage(major, minor, patch) {
-  // if (await tagExists(`image-${major}.${minor}.${patch}`)) {
+  // const tag = `image-${major}.${minor}.${patch}`;
+  // const releaseId = await createRelease(
+  //   tag,
+  //   `HULKs-OS Image ${major}.${minor}.${patch}`,
+  //   `Flashable image containing HULKs-OS ${major}.${minor}.${patch}, for instructions see https://hulks.de/hulk/setup/overview/`
+  // );
+  // if (releaseId === null) {
   //   core.info(
-  //     `Tag image-${major}.${minor}.${patch} already exists, will not release a new image.`
+  //     `Tag ${tag} already exists, will not release a new image for ${major}.${minor}.${patch}.`
   //   );
   //   return;
   // }
-  // await exec.exec("ls -ahl /");
-  // await exec.exec("pwd");
-  // await exec.exec("kas --help");
-  const tag = `image-${major}.${minor}.${patch}`;
-  const releaseId = await createRelease(
-    tag,
-    `HULKs-OS Image ${major}.${minor}.${patch}`,
-    `Flashable image containing HULKs-OS ${major}.${minor}.${patch}, for instructions see https://hulks.de/hulk/setup/overview/`
-  );
-  if (releaseId === null) {
-    core.info(
-      `Tag ${tag} already exists, will not release a new image for ${major}.${minor}.${patch}.`
-    );
-    return;
-  }
   try {
     await exec.exec("kas checkout meta-hulks/kas-project.yml");
     await exec.exec("mkdir -p meta-nao/recipes-support/aldebaran/aldebaran-binaries");
     await exec.exec("cp /aldebaran_binaries.tar.gz meta-nao/recipes-support/aldebaran/aldebaran-binaries/");
   } catch (error) {
-    deleteRelease(releaseId);
+    // deleteRelease(releaseId);
     throw error;
   }
 }
