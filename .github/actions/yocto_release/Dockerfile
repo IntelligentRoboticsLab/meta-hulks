@@ -9,10 +9,12 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Europe/Berlin apt-get in
     cpio \
     debianutils \
     diffstat \
+    file \
     gawk \
     gcc-multilib \
     git-core \
     iputils-ping \
+    lz4 \
     nodejs \
     npm \
     python3 \
@@ -24,6 +26,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Europe/Berlin apt-get in
     unzip \
     wget \
     xz-utils \
+    zstd \
     && rm --recursive --force /var/lib/apt/lists/*
 
 RUN git clone https://github.com/siemens/kas.git && cd kas && pip3 install --no-cache-dir .
