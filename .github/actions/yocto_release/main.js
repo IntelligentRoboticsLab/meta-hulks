@@ -3,10 +3,9 @@ import { buildAndRelease } from "./buildAndRelease";
 import { readDistroVersion } from "./readDistroVersion";
 
 try {
-  const distroVersion = readDistroVersion(`meta-hulks/conf/distro/HULKs-OS.conf`);
-  if (distroVersion === null) {
-    return;
-  }
+  const distroVersion = readDistroVersion(
+    `meta-hulks/conf/distro/HULKs-OS.conf`
+  );
   buildAndRelease({
     tag: `image-${distroVersion.major}.${distroVersion.minor}.${distroVersion.patch}`,
     name: `HULKs-OS Image ${distroVersion.major}.${distroVersion.minor}.${distroVersion.patch}`,

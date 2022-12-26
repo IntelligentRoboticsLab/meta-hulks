@@ -1,5 +1,6 @@
 import { setFailed } from "@actions/core";
 import { readFileSync } from "fs";
+import { exit } from "process";
 
 export function readDistroVersion(distroConfPath) {
   const distroConf = readFileSync(distroConfPath).toString();
@@ -10,7 +11,7 @@ export function readDistroVersion(distroConfPath) {
     setFailed(
       `DISTRO_VERSION in ${distroConfPath} does not match \\d+\\.\\d+\\.\\d+`
     );
-    return null;
+    exit(1);
   }
   return {
     major: parseInt(matches[1]),
