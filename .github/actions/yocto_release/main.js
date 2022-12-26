@@ -2,6 +2,7 @@ const core = require("@actions/core");
 const exec = require("@actions/exec");
 const fs = require("fs");
 const github = require("@actions/github");
+const io = require("@actions/io");
 
 const GITHUB_TOKEN = core.getInput("GITHUB_TOKEN");
 const octokit = github.getOctokit(GITHUB_TOKEN);
@@ -46,8 +47,8 @@ async function releaseImage(major, minor, patch) {
   // }
   try {
     await exec.exec("kas checkout meta-hulks/kas-project.yml");
-    await exec.exec("mkdir -p meta-nao/recipes-support/aldebaran/aldebaran-binaries");
-    await exec.exec("cp /aldebaran_binaries.tar.gz meta-nao/recipes-support/aldebaran/aldebaran-binaries/");
+    await io.mkdirP("meta-nao/recipes-support/aldebaran/aldebaran-binaries");
+    await io.cp("/aldebaran_binaries.tar.gz", "meta-nao/recipes-support/aldebaran/aldebaran-binaries/");
     await exec.exec("kas build --target nao-image --cmd do_image meta-hulks/kas-project.yml");
   } catch (error) {
     // deleteRelease(releaseId);
