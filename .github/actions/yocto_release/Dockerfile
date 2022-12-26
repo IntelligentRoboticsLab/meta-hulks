@@ -29,9 +29,3 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Europe/Berlin apt-get in
 RUN git clone https://github.com/siemens/kas.git && cd kas && pip3 install --no-cache-dir .
 
 COPY aldebaran_binaries.tar.gz /
-
-RUN groupadd --gid 1000 yocto && useradd --no-log-init --create-home --home-dir /yocto --system --uid 1000 --gid 1000 yocto
-WORKDIR /yocto
-USER yocto:yocto
-
-VOLUME /yocto
