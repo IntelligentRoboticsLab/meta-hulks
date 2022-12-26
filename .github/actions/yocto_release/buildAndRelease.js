@@ -1,7 +1,9 @@
 import { info } from "@actions/core";
 import { exec } from "@actions/exec";
 import { cp, mkdirP } from "@actions/io";
-import { upload } from "./upload";
+import { createRelease } from "./createRelease.js";
+import { deleteRelease } from "./deleteRelease.js";
+import { upload } from "./upload.js";
 
 export async function buildAndRelease(options) {
   const release = await createRelease(options.tag, options.name, options.body);

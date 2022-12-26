@@ -1,6 +1,6 @@
 import { setFailed } from "@actions/core";
-import { buildAndRelease } from "./buildAndRelease";
-import { readDistroVersion } from "./readDistroVersion";
+import { buildAndRelease } from "./buildAndRelease.js";
+import { readDistroVersion } from "./readDistroVersion.js";
 
 try {
   const distroVersion = readDistroVersion(
