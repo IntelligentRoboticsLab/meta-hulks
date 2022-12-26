@@ -1,15 +1,14 @@
 name: Yocto Release
 on:
   push:
-    # branches:
-    #   - main
-    # paths:
-    #   - conf/distro/HULKs-OS.conf
+    branches:
+      - main
+    paths:
+      - conf/distro/HULKs-OS.conf
 jobs:
   release:
     name: Yocto Release
     runs-on:
-      # - ubuntu-latest
       - self-hosted
     container:
       image: ghcr.io/hulks/yocto_release
