@@ -29,6 +29,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Europe/Berlin apt-get in
     zstd \
     && rm --recursive --force /var/lib/apt/lists/*
 
-RUN git clone https://github.com/siemens/kas.git && cd kas && pip3 install --no-cache-dir .
+RUN pip3 install --no-cache-dir git+https://github.com/siemens/kas.git
 
 COPY aldebaran_binaries.tar.gz /
