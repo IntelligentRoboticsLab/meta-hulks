@@ -48,6 +48,7 @@ async function releaseImage(major, minor, patch) {
     await exec.exec("kas checkout meta-hulks/kas-project.yml");
     await exec.exec("mkdir -p meta-nao/recipes-support/aldebaran/aldebaran-binaries");
     await exec.exec("cp /aldebaran_binaries.tar.gz meta-nao/recipes-support/aldebaran/aldebaran-binaries/");
+    await exec.exec("kas build --target nao-image meta-hulks/kas-project.yml");
   } catch (error) {
     // deleteRelease(releaseId);
     throw error;
