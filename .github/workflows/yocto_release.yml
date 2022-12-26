@@ -15,13 +15,13 @@ jobs:
       image: ghcr.io/hulks/yocto_release
       options: --user=1000:1000
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
         with:
           path: meta-hulks
-      - name: Install Dependencies
+      - name: Install dependencies
         run: cd meta-hulks/.github/actions/yocto_release/ && npm ci
-      - name: Build and Release
+      - name: Build and release
         uses: ./meta-hulks/.github/actions/yocto_release
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
