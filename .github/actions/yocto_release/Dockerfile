@@ -20,6 +20,7 @@ RUN apt-get update && \
         gawk \
         gcc-multilib \
         git-core \
+        git-lfs \
         iputils-ping \
         locales \
         lz4 \
