@@ -13,8 +13,6 @@ jobs:
       - self-hosted
     container:
       image: ghcr.io/hulks/yocto_release
-      volumes:
-        - yocto_release_build:/yocto/build
       options: --user=1000:1000
     steps:
       - uses: actions/checkout@v3
