@@ -28,7 +28,7 @@ export async function buildAndRelease(options) {
     await upload(release.uploadUrl, options.artifactPath);
   } catch (error) {
     info(`Removing ${options.name} release...`);
-    deleteRelease(release.id);
+    deleteRelease(release.id, options.tag);
     throw error;
   }
 }
