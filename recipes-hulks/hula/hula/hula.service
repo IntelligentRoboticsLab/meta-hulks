@@ -5,7 +5,8 @@ After=dbus.socket lola.service
 
 [Service]
 ExecStart=/usr/bin/hula
-LimitRTPRIO=36
+CPUSchedulingPolicy=fifo
+CPUSchedulingPriority=10
 TimeoutStopSec=10
 StandardOutput=journal
 Type=notify
