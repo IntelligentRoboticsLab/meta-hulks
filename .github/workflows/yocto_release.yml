@@ -1,13 +1,8 @@
 name: Yocto Release
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - conf/distro/HULKs-OS.conf
+on: push
 jobs:
-  release:
-    name: Yocto Release
+  cicd:
+    name: Yocto Continuous Integration and Delivery
     runs-on:
       - self-hosted
     container:
@@ -18,9 +13,13 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: meta-hulks
-      - name: Install dependencies
-        run: cd meta-hulks/.github/actions/yocto_release/ && npm ci
-      - name: Build and release
-        uses: ./meta-hulks/.github/actions/yocto_release
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout Yocto layers
+        run: kas checkout meta-hulks/kas-project.yml
+      - name: Test
+        run: cd meta-hulks && git describe --tags --abbrev=0
+      # - name: Install dependencies
+      #   run: cd meta-hulks/.github/actions/yocto_release/ && npm ci
+      # - name: Build and release
+      #   uses: ./meta-hulks/.github/actions/yocto_release
+      #   with:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
