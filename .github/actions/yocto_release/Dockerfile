@@ -19,7 +19,7 @@ RUN apt-get update && \
         file \
         gawk \
         gcc-multilib \
-        git-core \
+        git \
         git-lfs \
         iputils-ping \
         locales \
