@@ -16,11 +16,19 @@ jobs:
           path: meta-hulks
       - name: Checkout Yocto layers
         run: kas checkout meta-hulks/kas-project.yml
-      - name: Test
-        run: cd meta-hulks && git describe --tags --abbrev=0
-      # - name: Install dependencies
-      #   run: cd meta-hulks/.github/actions/yocto_release/ && npm ci
-      # - name: Build and release
-      #   uses: ./meta-hulks/.github/actions/yocto_release
-      #   with:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Populate aldebaran_binaries.tar.gz
+        run: cp /aldebaran_binaries.tar.gz meta-nao/recipes-support/aldebaran/aldebaran-binaries/
+      - name: Build image
+        run: kas build --target nao-image --cmd build meta-hulks/kas-project.yml
+      - name: Build SDK
+        run: kas build --target nao-image --cmd populate_sdk meta-hulks/kas-project.yml
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          name: HULKs-OS ${{ github.ref_name }}
+          body: Flashable image containing HULKs-OS ${{ github.ref_name }} and the corresponding SDK with the toolchain and other tools targeting HULKs-OS, for instructions see https://hulks.de/hulk/setup/overview/
+          files: |
+            build/tmp/deploy/images/nao-v6/nao-image-HULKs-OS-${{ github.ref_name }}.ext3.gz.opn
+            build/tmp/deploy/sdk/HULKs-OS-toolchain-${{ github.ref_name }}.sh
+          fail_on_unmatched_files: true
