@@ -1,9 +1,0 @@
-name: Yocto Release
-description: Releases HULKs-OS Images & SDKs
-inputs:
-  GITHUB_TOKEN:
-    description: GITHUB_TOKEN
-    required: true
-runs:
-  using: node16
-  main: main.js

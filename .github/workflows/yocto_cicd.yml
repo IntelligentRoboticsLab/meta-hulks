@@ -1,8 +1,8 @@
-name: Yocto Release
+name: Yocto CI/CD
 on: push
 jobs:
   cicd:
-    name: Yocto Continuous Integration and Delivery
+    name: Yocto CI/CD
     runs-on:
       - self-hosted
     container:
