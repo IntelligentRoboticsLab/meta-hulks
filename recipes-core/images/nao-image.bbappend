@@ -10,4 +10,5 @@ CORE_IMAGE_EXTRA_INSTALL += "\
                              libxml2-utils \
                              nano \
                              network-config \
+                             iproute2 \
                             "
