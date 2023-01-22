@@ -14,6 +14,8 @@ jobs:
         with:
           fetch-depth: 0
           path: meta-hulks
+      - name: Clean temporary directories
+        run: rm -rf build/tmp
       - name: Checkout Yocto layers
         run: kas checkout meta-hulks/kas-project.yml
       - name: Populate aldebaran_binaries.tar.gz
