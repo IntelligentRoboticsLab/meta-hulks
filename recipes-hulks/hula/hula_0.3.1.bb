@@ -1,7 +1,7 @@
 inherit cargo
 
 SRC_URI += "git://git@github.com/hulks/hulk.git;protocol=https;branch=main;"
-SRCREV = "9a643764b6a47b671680bc5437fc39a6e1ab15ae"
+SRCREV = "04ff535a89774eac9595141bba8d98567dbbe0f3"
 S = "${WORKDIR}/git/tools/hula"
 CARGO_SRC_DIR = "proxy"
 
