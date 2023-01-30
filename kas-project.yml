@@ -14,3 +14,6 @@ repos:
             0001-rust_1.65:
                 repo: "meta-hulks"
                 path: "patches/0001-rust_1.65.patch"
+            0002-compress-sdk-with-zstd:
+                repo: "meta-hulks"
+                path: "patches/0002-compress-sdk-with-zstd.patch"

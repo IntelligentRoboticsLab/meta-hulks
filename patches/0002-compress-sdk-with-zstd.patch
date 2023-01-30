@@ -1,0 +1,61 @@
+diff --git a/meta/classes-recipe/populate_sdk_base.bbclass b/meta/classes-recipe/populate_sdk_base.bbclass
+index 64a4a58bef..0561e1d2d7 100644
+--- a/meta/classes-recipe/populate_sdk_base.bbclass
++++ b/meta/classes-recipe/populate_sdk_base.bbclass
+@@ -71,9 +71,9 @@ TOOLCHAIN_TARGET_TASK_ATTEMPTONLY ?= ""
+ TOOLCHAIN_OUTPUTNAME ?= "${SDK_NAME}-toolchain-${SDK_VERSION}"
+ 
+ # Default archived SDK's suffix
+-SDK_ARCHIVE_TYPE ?= "tar.xz"
+-SDK_XZ_COMPRESSION_LEVEL ?= "-9"
+-SDK_XZ_OPTIONS ?= "${XZ_DEFAULTS} ${SDK_XZ_COMPRESSION_LEVEL}"
++SDK_ARCHIVE_TYPE ?= "tar.zst"
++SDK_ZSTD_COMPRESSION_LEVEL ?= "-3"
++SDK_ZSTD_OPTIONS ?= "-T0 ${SDK_ZSTD_COMPRESSION_LEVEL}"
+ 
+ # To support different sdk type according to SDK_ARCHIVE_TYPE, now support zip and tar.xz
+ python () {
+@@ -83,8 +83,8 @@ python () {
+        # recommand to cd into input dir first to avoid archive with buildpath
+        d.setVar('SDK_ARCHIVE_CMD', 'cd ${SDK_OUTPUT}/${SDKPATH}; zip -r -y ${SDKDEPLOYDIR}/${TOOLCHAIN_OUTPUTNAME}.${SDK_ARCHIVE_TYPE} .')
+     else:
+-       d.setVar('SDK_ARCHIVE_DEPENDS', 'xz-native')
+-       d.setVar('SDK_ARCHIVE_CMD', 'cd ${SDK_OUTPUT}/${SDKPATH}; tar ${SDKTAROPTS} -cf - . | xz ${SDK_XZ_OPTIONS} > ${SDKDEPLOYDIR}/${TOOLCHAIN_OUTPUTNAME}.${SDK_ARCHIVE_TYPE}')
++       d.setVar('SDK_ARCHIVE_DEPENDS', 'zstd-native')
++       d.setVar('SDK_ARCHIVE_CMD', 'cd ${SDK_OUTPUT}/${SDKPATH}; tar ${SDKTAROPTS} -cf - . | zstd ${SDK_ZSTD_OPTIONS} > ${SDKDEPLOYDIR}/${TOOLCHAIN_OUTPUTNAME}.${SDK_ARCHIVE_TYPE}')
+ }
+ 
+ SDK_RDEPENDS = "${TOOLCHAIN_TARGET_TASK} ${TOOLCHAIN_HOST_TASK}"
+diff --git a/meta/files/toolchain-shar-extract.sh b/meta/files/toolchain-shar-extract.sh
+index 4386b985bb..bbd015a98f 100644
+--- a/meta/files/toolchain-shar-extract.sh
++++ b/meta/files/toolchain-shar-extract.sh
+@@ -51,8 +51,8 @@ if [ "$INST_ARCH" != "$SDK_ARCH" ]; then
+ 	fi
+ fi
+ 
+-if ! xz -V > /dev/null 2>&1; then
+-	echo "Error: xz is required for installation of this SDK, please install it first"
++if ! zstd -V > /dev/null 2>&1; then
++	echo "Error: zstd is required for installation of this SDK, please install it first"
+ 	exit 1
+ fi
+ 
+@@ -122,7 +122,7 @@ if [ "$listcontents" = "1" ] ; then
+             rm sdk.zip && exit 1
+         fi
+     else
+-        tail -n +$payload_offset "$0"| tar tvJ || exit 1
++        tail -n +$payload_offset "$0"| tar tv --zstd || exit 1
+     fi
+     exit
+ fi
+@@ -250,7 +250,7 @@ if [ @SDK_ARCHIVE_TYPE@ = "zip" ]; then
+         rm sdk.zip && exit 1
+     fi
+ else
+-    tail -n +$payload_offset "$0"| $SUDO_EXEC tar mxJ -C $target_sdk_dir --checkpoint=.2500 $EXTRA_TAR_OPTIONS || exit 1
++    tail -n +$payload_offset "$0"| $SUDO_EXEC tar mx --zstd -C $target_sdk_dir --checkpoint=.2500 $EXTRA_TAR_OPTIONS || exit 1
+ fi
+ echo "done"
+ 
