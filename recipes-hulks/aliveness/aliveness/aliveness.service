@@ -1,7 +1,8 @@
 [Unit]
 Description=Aliveness Service
 Requires=dbus.socket
-After=dbus.socket 
+Wants=network-online.target
+After=dbus.socket network-online.target
 
 [Service]
 ExecStart=/usr/bin/aliveness
