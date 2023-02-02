@@ -1,15 +1,12 @@
 [Unit]
 Description=Aliveness Service
-Requires=dbus.socket
-Wants=network-online.target
-After=dbus.socket network-online.target
+Requires=dbus.socket systemd-networkd-wait-online@enp4s0.service
+After=dbus.socket systemd-networkd-wait-online@enp4s0.service
 
 [Service]
 ExecStart=/usr/bin/aliveness
 TimeoutStopSec=10
 StandardOutput=journal
-# Type=notify
-# NotifyAccess=main
 User=nao
 Group=nao
 

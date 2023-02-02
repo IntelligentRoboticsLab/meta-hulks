@@ -9,4 +9,3 @@ ExecStart=/usr/sbin/configure_network
 
 [Install]
 WantedBy=systemd-networkd.service
-Requires=systemd-networkd-wait-online@enp4s0.service
