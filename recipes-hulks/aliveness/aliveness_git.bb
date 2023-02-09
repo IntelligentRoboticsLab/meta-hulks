@@ -5,8 +5,8 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/git/COPYING;md5=5b4473596678d62d9d83096273
 
 inherit cargo pkgconfig
 
-SRC_URI = "git://github.com/schmidma/hulk;branch=active-aliveness;protocol=https"
-SRCREV = "ce06965187fc4b214edbf5034a75d56e04f4613d"
+SRC_URI = "git://github.com/hulks/hulk;branch=main;protocol=https"
+SRCREV = "cce0d1af62f8126f6e51e648607d30d0c30a3657"
 S = "${WORKDIR}/git/tools/aliveness"
 
 inherit systemd
