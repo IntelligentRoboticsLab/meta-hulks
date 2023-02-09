@@ -124,7 +124,7 @@ SRC_URI += " \
     crate://crates.io/scopeguard/1.1.0 \
     crate://crates.io/serde/1.0.149 \
     crate://crates.io/serde_derive/1.0.149 \
-    crate://crates.io/serde_json/1.0.89 \
+    crate://crates.io/serde_json/1.0.92 \
     crate://crates.io/serde_repr/0.1.10 \
     crate://crates.io/sha1/0.10.5 \
     crate://crates.io/sharded-slab/0.1.4 \
