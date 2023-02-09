@@ -3,7 +3,7 @@ HOMEPAGE = "https://hulks.de"
 LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/git/COPYING;md5=5b4473596678d62d9d83096273422c8c"
 
-inherit cargo pkgconfig
+inherit cargo
 
 SRC_URI = "git://github.com/hulks/hulk;branch=main;protocol=https"
 SRCREV = "cce0d1af62f8126f6e51e648607d30d0c30a3657"
