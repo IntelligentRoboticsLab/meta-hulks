@@ -13,6 +13,11 @@ inherit systemd
 
 SYSTEMD_SERVICE:${PN} = "aliveness.service"
 
+do_install:append () {
+  install -d "${D}${systemd_unitdir}/system"
+  install -m 0644 "${WORKDIR}/aliveness.service" "${D}${systemd_unitdir}/system/"
+}
+
 SRC_URI += " \
     file://aliveness.service \
     crate://crates.io/addr2line/0.17.0 \
@@ -182,9 +187,3 @@ SRC_URI += " \
     crate://crates.io/zvariant/3.10.0 \
     crate://crates.io/zvariant_derive/3.10.0 \
 "
-
-do_install:append () {
-  install -d "${D}${systemd_unitdir}/system"
-  install -m 0644 "${WORKDIR}/aliveness.service" "${D}${systemd_unitdir}/system/"
-}
-
