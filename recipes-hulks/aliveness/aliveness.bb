@@ -5,8 +5,8 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/git/COPYING;md5=5b4473596678d62d9d83096273
 
 inherit cargo
 
-SRC_URI = "git://github.com/hulks/hulk;branch=main;protocol=https"
-SRCREV = "cce0d1af62f8126f6e51e648607d30d0c30a3657"
+SRC_URI = "git://github.com/julianschuler/hulk;branch=hula-dbus;protocol=https"
+SRCREV = "d5dbc8746e9a4d4af5a1412f389f855d93ca575f"
 S = "${WORKDIR}/git/tools/aliveness"
 
 SYSTEMD_PACKAGES = "${PN}"
