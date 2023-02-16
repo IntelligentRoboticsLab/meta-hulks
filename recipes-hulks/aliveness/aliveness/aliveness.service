@@ -4,7 +4,7 @@ Requires=dbus.socket systemd-networkd-wait-online@enp4s0.service
 After=dbus.socket systemd-networkd-wait-online@enp4s0.service
 
 [Service]
-ExecStart=/usr/bin/aliveness
+ExecStart=/usr/bin/aliveness-service
 TimeoutStopSec=10
 StandardOutput=journal
 User=nao
