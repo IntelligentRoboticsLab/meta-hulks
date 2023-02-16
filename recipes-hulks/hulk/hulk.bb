@@ -25,7 +25,7 @@ do_install() {
   install -m 0644 ${WORKDIR}/hulk-gdbserver.service ${D}${systemd_unitdir}/system/
 }
 
-FILES:${PN} = "\
+FILES:${PN} = " \
                 ${bindir}/camera-reset \
                 ${bindir}/launchHULK \
                 ${bindir}/hulk \
