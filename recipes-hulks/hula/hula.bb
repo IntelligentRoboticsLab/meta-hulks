@@ -23,16 +23,24 @@ RDEPENDS:${PN} += " \
 
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE:${PN} = "hula.service"
-SRC_URI += "file://hula.service"
+SRC_URI += " \
+             file://hula.service \
+             file://org.hulks.hula.conf \
+           "
 
 inherit systemd
 
 do_install:append() {
   install -d ${D}${systemd_unitdir}/system/
   install -m 0644 ${WORKDIR}/hula.service ${D}${systemd_unitdir}/system/
+  install -d ${D}/usr/share/dbus-1/system.d/
+  install -m 0644 ${WORKDIR}/org.hulks.hula.conf ${D}/usr/share/dbus-1/system.d/
 }
 
-FILES:${PN} += "${systemd_unitdir}/system/hula.service"
+FILES:${PN} += " \
+                 ${systemd_unitdir}/system/hula.service \
+                 /usr/share/dbus-1/system.d/org.hulks.hula.conf \
+               "
 
 SRC_URI += " \
              crate://crates.io/addr2line/0.17.0 \
