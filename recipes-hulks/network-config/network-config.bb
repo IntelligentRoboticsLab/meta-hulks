@@ -24,7 +24,6 @@ FILES:${PN} = "\
 
 # install services by default
 #NATIVE_SYSTEMD_SUPPORT = "1"
-SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE:${PN} = "network-config.service"
 
 inherit systemd

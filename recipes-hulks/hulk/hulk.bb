@@ -10,7 +10,6 @@ SRC_URI = " \
             file://hulk \
           "
 
-SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE:${PN} = "hulk.service hulk-gdbserver.service"
 
 inherit systemd

@@ -9,7 +9,6 @@ SRC_URI = "git://github.com/julianschuler/hulk;branch=hula-dbus;protocol=https"
 SRCREV = "d5dbc8746e9a4d4af5a1412f389f855d93ca575f"
 S = "${WORKDIR}/git/tools/aliveness"
 
-SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE:${PN} = "aliveness.service"
 SRC_URI += "file://aliveness.service"
 

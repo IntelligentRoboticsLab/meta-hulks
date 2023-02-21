@@ -21,7 +21,6 @@ RDEPENDS:${PN} += " \
                     systemd \
                   "
 
-SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE:${PN} = "hula.service"
 SRC_URI += " \
              file://hula.service \
