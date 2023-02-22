@@ -10,7 +10,6 @@ SRC_URI = " \
             file://hulk \
           "
 
-SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE:${PN} = "hulk.service hulk-gdbserver.service"
 
 inherit systemd
@@ -25,10 +24,8 @@ do_install() {
   install -m 0644 ${WORKDIR}/hulk-gdbserver.service ${D}${systemd_unitdir}/system/
 }
 
-FILES:${PN} = "\
+FILES:${PN} = " \
                 ${bindir}/camera-reset \
                 ${bindir}/launchHULK \
                 ${bindir}/hulk \
-                ${systemd_unitdir}/system/hulk.service \
-                ${systemd_unitdir}/system/hulk-gdbserver.service \
               "
