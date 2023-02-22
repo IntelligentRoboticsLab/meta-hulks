@@ -32,13 +32,13 @@ inherit systemd
 do_install:append() {
   install -d ${D}${systemd_unitdir}/system/
   install -m 0644 ${WORKDIR}/hula.service ${D}${systemd_unitdir}/system/
-  install -d ${D}/usr/share/dbus-1/system.d/
-  install -m 0644 ${WORKDIR}/org.hulks.hula.conf ${D}/usr/share/dbus-1/system.d/
+  install -d ${D}${datadir}/dbus-1/system.d/
+  install -m 0644 ${WORKDIR}/org.hulks.hula.conf ${D}${datadir}/dbus-1/system.d/
 }
 
 FILES:${PN} += " \
                  ${systemd_unitdir}/system/hula.service \
-                 /usr/share/dbus-1/system.d/org.hulks.hula.conf \
+                 ${datadir}/dbus-1/system.d/org.hulks.hula.conf \
                "
 
 SRC_URI += " \
