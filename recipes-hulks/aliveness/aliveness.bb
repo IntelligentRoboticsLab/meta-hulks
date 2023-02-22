@@ -19,8 +19,6 @@ do_install:append () {
   install -m 0644 "${WORKDIR}/aliveness.service" "${D}${systemd_unitdir}/system/"
 }
 
-FILES:${PN} += "${systemd_unitdir}/system/aliveness.service"
-
 SRC_URI += " \
              crate://crates.io/addr2line/0.17.0 \
              crate://crates.io/adler/1.0.2 \

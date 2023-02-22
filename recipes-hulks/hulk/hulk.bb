@@ -28,6 +28,4 @@ FILES:${PN} = " \
                 ${bindir}/camera-reset \
                 ${bindir}/launchHULK \
                 ${bindir}/hulk \
-                ${systemd_unitdir}/system/hulk.service \
-                ${systemd_unitdir}/system/hulk-gdbserver.service \
               "

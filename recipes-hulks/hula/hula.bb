@@ -36,10 +36,7 @@ do_install:append() {
   install -m 0644 ${WORKDIR}/org.hulks.hula.conf ${D}${datadir}/dbus-1/system.d/
 }
 
-FILES:${PN} += " \
-                 ${systemd_unitdir}/system/hula.service \
-                 ${datadir}/dbus-1/system.d/org.hulks.hula.conf \
-               "
+FILES:${PN} += "${datadir}/dbus-1/system.d/org.hulks.hula.conf"
 
 SRC_URI += " \
              crate://crates.io/addr2line/0.17.0 \

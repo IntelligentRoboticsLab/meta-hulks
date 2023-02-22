@@ -19,11 +19,8 @@ do_install() {
 FILES:${PN} = " \
                 ${sysconfdir}/id_map.json \
                 ${sbindir}/configure_network \
-                ${systemd_unitdir}/system/network-config.service \
               "
 
-# install services by default
-#NATIVE_SYSTEMD_SUPPORT = "1"
 SYSTEMD_SERVICE:${PN} = "network-config.service"
 
 inherit systemd
