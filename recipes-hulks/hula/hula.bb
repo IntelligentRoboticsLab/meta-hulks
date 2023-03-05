@@ -38,4 +38,4 @@ do_install:append() {
 
 FILES:${PN} += "${datadir}/dbus-1/system.d/org.hulks.hula.conf"
 
-include hula-crates.bb
+require hula-crates.inc
