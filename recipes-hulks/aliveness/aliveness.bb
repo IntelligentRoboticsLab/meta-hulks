@@ -19,4 +19,4 @@ do_install:append () {
   install -m 0644 "${WORKDIR}/aliveness.service" "${D}${systemd_unitdir}/system/"
 }
 
-include aliveness-crates.bb
+require aliveness-crates.inc
