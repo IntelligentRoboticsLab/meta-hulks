@@ -7,8 +7,8 @@ distro: HULKs-DNT-OS
 repos:
     meta-hulks:
     meta-nao:
-        url: "https://github.com/HULKs/meta-nao.git"
-        refspec: 68ebdbf38569d60792337fea2af932f389e7497e
+        url: "https://github.com/IntelligentRoboticsLab/meta-nao.git"
+        refspec: 2017ec0e0e1b8e156c23b3c75d6e5841078a3b5c
     poky:
         patches:
             0001-rust_1.65:
