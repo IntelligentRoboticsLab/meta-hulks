@@ -8,6 +8,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
                               compilednn \
                               hula \
                               hulk \
+                              sounds \
                               aliveness \
                               jq \
                               libxml2-utils \
