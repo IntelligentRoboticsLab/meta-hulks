@@ -8,7 +8,7 @@ repos:
     meta-hulks:
     meta-nao:
         url: "https://github.com/IntelligentRoboticsLab/meta-nao.git"
-        refspec: 2017ec0e0e1b8e156c23b3c75d6e5841078a3b5c
+        refspec: bf999d8e9f8a54da8adf97fd0a9c491a10749d79
     poky:
         patches:
             0001-rust_1.65:
