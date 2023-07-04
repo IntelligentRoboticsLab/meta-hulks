@@ -1,7 +1,7 @@
 [Unit]
 Description=Aliveness Service
-Requires=dbus.socket systemd-networkd-wait-online@enp4s0.service
-After=dbus.socket systemd-networkd-wait-online@enp4s0.service
+Requires=dbus.socket enp4s0-wait-online.service
+After=dbus.socket enp4s0-wait-online.service
 
 [Service]
 ExecStart=/usr/bin/aliveness-service
